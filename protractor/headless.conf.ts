@@ -10,10 +10,10 @@ export const config: Config = {
     browserName: 'chrome',
     chromeOptions: {
       args: ['--headless', '--disable-gpu', '--window-size=800,600', '--no-sandbox']
-     }
+    }
   },
   onPrepare: () => {
     browser.ignoreSynchronization = true;
     reporter();
   }
-}
+};
