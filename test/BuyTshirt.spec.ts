@@ -27,16 +27,10 @@ describe('Buy a t-shirt', () => {
   const orderResumePage: OrderResumePage = new OrderResumePage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
   const username: string = 'aperdomobo@gmail.com';
-  const password: string = 'WorkshopProtractor';
-
-  beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
-  });
-  
+  const password: string = 'WorkshopProtractor';  
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-    await(browser.sleep(3000));
     
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(3000));
