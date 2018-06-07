@@ -27,7 +27,11 @@ describe('Buy a t-shirt', () => {
   const orderResumePage: OrderResumePage = new OrderResumePage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
   const username: string = 'aperdomobo@gmail.com';
+<<<<<<< HEAD
   const password: string = 'WorkshopProtractor';
+=======
+  const password: string = 'WorkshopProtractor';  
+>>>>>>> timeout modified
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
