@@ -1,44 +1,65 @@
-import { browser, element, by } from 'protractor';
+import { browser } from 'protractor';
+import {
+  MenuContentPage,
+  ProductDetailPage,
+  ProductAddedModalPage,
+  SummaryStepPage,
+  SignInStepPage,
+  ShippingStepPage,
+  PaymentStepPage,
+  BankPaymentPage,
+  OrderResumePage,
+  AddressStepPage,
+  ProductListPage
+} from '../src/page';
+
 
 describe('Buy a t-shirt', () => {
- beforeEach(() => {
-   jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
- });
+  const menuContentPage: MenuContentPage = new MenuContentPage();
+  const productDetailPage: ProductDetailPage = new ProductDetailPage();
+  const productListPage: ProductListPage = new ProductListPage();
+  const productAdded: ProductAddedModalPage = new ProductAddedModalPage();
+  const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+  const signInStepPage: SignInStepPage = new SignInStepPage();
+  const addressStepPage: AddressStepPage = new AddressStepPage();
+  const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+  const orderResumePage: OrderResumePage = new OrderResumePage();
+  const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+  const username: string = 'aperdomobo@gmail.com';
+  const password: string = 'WorkshopProtractor';
 
- it('then should be bought a t-shirt', async () => {
-   await browser.get('http://automationpractice.com/');
-   await(browser.sleep(10000));
-   await element(by.css('#block_top_menu > ul > li:nth-child(3) > a')).click();
-   await(browser.sleep(3000));
-   await
-   element(by.css('#center_column a.product_img_link[title="Faded Short Sleeve T-shirts"] > img')).click();
-   await(browser.sleep(3000));
-   await element(by.css('#add_to_cart > button > span')).click();
-   await(browser.sleep(3000));
-   await element(by.css('[style*="display: block;"] .button-container > a')).click();
-   await(browser.sleep(3000));
-   await element(by.css('.cart_navigation span')).click();
-   await(browser.sleep(3000));
+  beforeEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+  });
   
-   await element(by.id('email')).sendKeys('aperdomobo@gmail.com');
-   await element(by.id('passwd')).sendKeys('WorkshopProtractor');
-   await element(by.css('#SubmitLogin > span')).click();
-   await(browser.sleep(3000));
-  
-   await element(by.css('[name = "processAddress"] > span')).click();
-   await(browser.sleep(3000));
 
-   await element(by.id('cgv')).click();
-   await(browser.sleep(3000));
+  it('then should be bought a t-shirt', async () => {
+    await browser.get('http://automationpractice.com/');
+    await(browser.sleep(3000));
+    await menuContentPage.goToTShirtMenu();
+    await(browser.sleep(3000));
+    await productDetailPage.goToProductDetail(); 
+    await(browser.sleep(3000));
+    await productListPage.addProductToCart();
+    await(browser.sleep(3000));
+    await productAdded.checkoutProduct();
+    await(browser.sleep(3000));
+    await summaryStepPage.confirmShoppingCartSummary();
+    await(browser.sleep(3000));
+    await signInStepPage.signInToAccount(username, password);
+    await(browser.sleep(3000));    
+    await addressStepPage.checkoutAddress();
+    await(browser.sleep(3000));
+    await shippingStepPage.shippingCheckout();
+    await(browser.sleep(3000));
+    await paymentStepPage.selectPaymenMethod();
+    await(browser.sleep(3000));
 
-   await element(by.css('[name = "processCarrier"] > span')).click();
-   await(browser.sleep(3000));
-   await element(by.css('#HOOK_PAYMENT > div:nth-child(1) > div > p > a')).click();
-   await(browser.sleep(3000));
-   await element(by.css('#cart_navigation > button > span')).click();
-   await(browser.sleep(3000));
+    await bankPaymentPage.confirmPayment();
+    await(browser.sleep(3000));
 
-   await expect(element(by.css('#center_column > div > p > strong')).getText())
-     .toBe('Your order on My Store is complete.');
- });
+    await expect(orderResumePage.confirmOrder())
+      .toBe('Your order on My Store is complete.');
+  });
 });
