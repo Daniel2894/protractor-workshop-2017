@@ -37,6 +37,7 @@ describe('Buy a t-shirt', () => {
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
     await(browser.sleep(3000));
+<<<<<<< HEAD
     
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(3000));
@@ -62,6 +63,24 @@ describe('Buy a t-shirt', () => {
     await shippingStepPage.shippingCheckout();
     await(browser.sleep(3000));
 
+=======
+    await menuContentPage.goToTShirtMenu();
+    await(browser.sleep(3000));
+    await productDetailPage.goToProductDetail(); 
+    await(browser.sleep(3000));
+    await productListPage.addProductToCart();
+    await(browser.sleep(3000));
+    await productAdded.checkoutProduct();
+    await(browser.sleep(3000));
+    await summaryStepPage.confirmShoppingCartSummary();
+    await(browser.sleep(3000));
+    await signInStepPage.signInToAccount(username, password);
+    await(browser.sleep(3000));    
+    await addressStepPage.checkoutAddress();
+    await(browser.sleep(3000));
+    await shippingStepPage.shippingCheckout();
+    await(browser.sleep(3000));
+>>>>>>> page object model
     await paymentStepPage.selectPaymenMethod();
     await(browser.sleep(3000));
 
