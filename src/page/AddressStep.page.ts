@@ -2,6 +2,7 @@ import { element, by, ElementFinder, promise } from 'protractor';
 
 export class AddressStepPage {
 <<<<<<< HEAD
+<<<<<<< HEAD
   private get checkoutButton(): ElementFinder {
     return element(by.css('[name = "processAddress"] > span'));
   }
@@ -20,3 +21,13 @@ export class AddressStepPage {
  }
 }
 >>>>>>> page object model
+=======
+  private get checkoutButton(): ElementFinder {
+    return element(by.css('[name = "processAddress"] > span'));
+  }
+
+  public checkoutAddress(): promise.Promise<void> {
+    return this.checkoutButton.click();
+  }
+}
+>>>>>>> eof again

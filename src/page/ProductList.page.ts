@@ -18,4 +18,7 @@ export class ProductListPage {
     return this.addToCart.click();
   }
 }
+<<<<<<< HEAD
 >>>>>>> page object model
+=======
+>>>>>>> eof again
