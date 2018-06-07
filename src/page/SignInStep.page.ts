@@ -10,10 +10,14 @@ export class SignInStepPage {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   private get loginButton(): ElementFinder {
 =======
   private get login(): ElementFinder {
 >>>>>>> page object model
+=======
+  private get loginButton(): ElementFinder {
+>>>>>>> fixup
     return element(by.css('#SubmitLogin > span'));
   }
 
@@ -21,9 +25,13 @@ export class SignInStepPage {
     await this.usernameElement.sendKeys(username);
     await this.passwordElement.sendKeys(password);
 <<<<<<< HEAD
+<<<<<<< HEAD
     await this.loginButton.click();
 =======
     await this.login.click();
 >>>>>>> page object model
+=======
+    await this.loginButton.click();
+>>>>>>> fixup
   }
 }

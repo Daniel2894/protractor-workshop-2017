@@ -3,6 +3,7 @@ import { element, by, ElementFinder, promise } from 'protractor';
 export class BankPaymentPage {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   private get confirmBankPaymentButton(): ElementFinder {
     return element(by.css('#cart_navigation > button > span'));
   }
@@ -23,11 +24,14 @@ export class BankPaymentPage {
 >>>>>>> page object model
 =======
   private get confirmBankPayment(): ElementFinder {
+=======
+  private get confirmBankPaymentButton(): ElementFinder {
+>>>>>>> fixup
     return element(by.css('#cart_navigation > button > span'));
   }
 
   public confirmPayment(): promise.Promise<void> {
-    return this.confirmBankPayment.click();
+    return this.confirmBankPaymentButton.click();
   }
 }
 >>>>>>> eof again

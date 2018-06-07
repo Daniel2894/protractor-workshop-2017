@@ -3,6 +3,7 @@ import { element, by, ElementFinder } from 'protractor';
 export class ShippingStepPage {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   private get agreeTermsOfServiceCheckbox(): ElementFinder {
     return element(by.id('cgv'));
   }
@@ -22,11 +23,14 @@ export class ShippingStepPage {
  }
 =======
   private get agreeTermsOfService(): ElementFinder {
+=======
+  private get agreeTermsOfServiceCheckbox(): ElementFinder {
+>>>>>>> fixup
     return element(by.id('cgv'));
   }
 >>>>>>> eof again
 
-  private get proceedToCheckout(): ElementFinder {
+  private get proceedToCheckoutButton(): ElementFinder {
     return element(by.css('[name = "processCarrier"] > span'));
   }
 
@@ -39,8 +43,8 @@ export class ShippingStepPage {
 >>>>>>> page object model
 =======
   public async shippingCheckout(): Promise<void> {
-    await this.agreeTermsOfService.click();
-    await this.proceedToCheckout.click();
+    await this.agreeTermsOfServiceCheckbox.click();
+    await this.proceedToCheckoutButton.click();
   }
 }
 >>>>>>> eof again
