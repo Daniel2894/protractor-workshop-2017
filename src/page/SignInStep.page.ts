@@ -9,13 +9,13 @@ export class SignInStepPage {
     return element(by.id('passwd'));
   }
 
-  private get login(): ElementFinder {
+  private get loginButton(): ElementFinder {
     return element(by.css('#SubmitLogin > span'));
   }
 
   public async signInToAccount(username: string, password: string): Promise<void> {
     await this.usernameElement.sendKeys(username);
     await this.passwordElement.sendKeys(password);
-    await this.login.click();
+    await this.loginButton.click();
   }
 }
