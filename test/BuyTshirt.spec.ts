@@ -27,16 +27,16 @@ describe('Buy a t-shirt', () => {
   const orderResumePage: OrderResumePage = new OrderResumePage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
   const username: string = 'aperdomobo@gmail.com';
-  const password: string = 'WorkshopProtractor';  
+  const password: string = 'WorkshopProtractor';
+
+  beforeEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+  });
+  
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-<<<<<<< HEAD
     await(browser.sleep(3000));
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> timeout modified
     
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(3000));
@@ -62,38 +62,6 @@ describe('Buy a t-shirt', () => {
     await shippingStepPage.shippingCheckout();
     await(browser.sleep(3000));
 
-=======
-=======
-    
->>>>>>> eof again
-    await menuContentPage.goToTShirtMenu();
-    await(browser.sleep(3000));
-
-    await productDetailPage.goToProductDetail(); 
-    await(browser.sleep(3000));
-
-    await productListPage.addProductToCart();
-    await(browser.sleep(3000));
-
-    await productAdded.checkoutProduct();
-    await(browser.sleep(3000));
-
-    await summaryStepPage.confirmShoppingCartSummary();
-    await(browser.sleep(3000));
-
-    await signInStepPage.signInToAccount(username, password);
-    await(browser.sleep(3000));    
-
-    await addressStepPage.checkoutAddress();
-    await(browser.sleep(3000));
-
-    await shippingStepPage.shippingCheckout();
-    await(browser.sleep(3000));
-<<<<<<< HEAD
->>>>>>> page object model
-=======
-
->>>>>>> eof again
     await paymentStepPage.selectPaymenMethod();
     await(browser.sleep(3000));
 
