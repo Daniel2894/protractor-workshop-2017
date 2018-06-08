@@ -89,7 +89,5 @@ $RECYCLE.BIN/
 ## Typescript
 dist
 
-#reports
-reports
 
 # End of https://www.gitignore.io/api/node,windows,visualstudiocode
