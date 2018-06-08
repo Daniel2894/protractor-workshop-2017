@@ -1,3 +1,5 @@
+import { DisplayProcessor, SpecReporter } from 'jasmine-spec-reporter';
+
 export let reporter = () => {
 
   const { AwesomeReport } = require('jasmine-awesome-report');
@@ -9,4 +11,7 @@ export let reporter = () => {
   };
 
   jasmine.getEnv().addReporter(AwesomeReport.getReport(config));
+  jasmine.getEnv().addReporter(new SpecReporter({
+    customProcessors: [DisplayProcessor],
+  }));
 };
