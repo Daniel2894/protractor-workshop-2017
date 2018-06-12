@@ -1,11 +1,11 @@
 import { element, by, ElementFinder, promise } from 'protractor';
 
 export class ProductDetailPage {
-  private get productDetailButton(): ElementFinder {
-    return element(by.css('#center_column a.product_img_link[title="Faded Short Sleeve T-shirts"] > img'));
+  private get addToCartButton(): ElementFinder {
+    return element(by.css('#add_to_cart > button > span'));
   }
 
-  public goToProductDetail(): promise.Promise<void> {
-    return this.productDetailButton.click();
+  public addProductToCart(): promise.Promise<void> {
+    return this.addToCartButton.click();
   }
 }
