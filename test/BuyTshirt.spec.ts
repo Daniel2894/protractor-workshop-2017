@@ -16,6 +16,7 @@ import {
 
 describe('In a shopping webpage', () => {
   const webpage: string = 'http://automationpractice.com/';
+  const productName: string = 'Faded Short Sleeve T-shirts';
 
   beforeAll(async () => {
     await browser.get(webpage);
@@ -30,8 +31,8 @@ describe('In a shopping webpage', () => {
 
     beforeAll(async () => {
       await menuContentPage.goToTShirtMenu();
-      await productDetailPage.goToProductDetail();
-      await productListPage.addProductToCart();
+      await productListPage.selectProduct(productName);
+      await productDetailPage.addProductToCart();
       await productAdded.checkoutProduct();
       await summaryStepPage.confirmShoppingCartSummary();
     });
