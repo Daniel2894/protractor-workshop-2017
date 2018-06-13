@@ -19,7 +19,7 @@ describe('If i want to modify an IFrame', () => {
 
     it('Should have the new height', async () => {
       await expect(iFramePage.getHeight())
-        .toBe(400);
+        .toBe(height);
     });    
   });
 });
