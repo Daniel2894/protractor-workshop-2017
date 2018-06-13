@@ -11,27 +11,27 @@ export class PersonalInformationPage {
   }
 
   private sexRadioButton(sexOption: string): ElementFinder{
-    return element(by.css(`[name="sex"][value="${sexOption}"]`));
+    return element(by.css(`[value="${sexOption}"]`));
   }
 
   private experienceRadioButton(experienceOption: number): ElementFinder{
-    return element(by.css(`[name="exp"][value="${experienceOption}"]`));
+    return element(by.css(`[value="${experienceOption}"]`));
   }
 
   private professionRadioButton(profession: string): ElementFinder{
-    return element(by.css(`[name="profession"][value="${profession}"]`));
+    return element(by.css(`[value="${profession}"]`));
   }
 
   private toolsRadioButton(tools: string): ElementFinder{
-    return element(by.css(`[name="tool"][value="${tools}"]`));
+    return element(by.css(`[value="${tools}"]`));
   }
 
   private continentDrowpdown(continent: string): ElementFinder{
-    return element(by.id('continents')).element(by.cssContainingText('option', continent));
+    return element(by.cssContainingText('option', continent));
   }
 
   private commandList(command: string): ElementFinder{
-    return element(by.id('selenium_commands')).element(by.cssContainingText('option', command));
+    return element(by.cssContainingText('option', command));
   }
 
   private get submitButton(): ElementFinder{
