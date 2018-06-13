@@ -32,7 +32,7 @@ describe('In the Tools QA webpage', () => {
     describe('and get the form title', () => {
       it('Should have the title', async () => {
         expect(await personalInformationPage.formTitle()).toBe('Practice Automation Form');
-      })
-    })    
+      });
+    });
   });
-})
+});
