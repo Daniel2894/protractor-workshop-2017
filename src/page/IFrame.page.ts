@@ -11,7 +11,7 @@ export class IFramePage {
   }
 
   public async getHeight(): Promise<number> {
-    let height = await this.frameElement.getAttribute('height');
+    const height = await this.frameElement.getAttribute('height');
     return Number(height);
   }
 }
