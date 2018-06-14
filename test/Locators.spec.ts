@@ -3,6 +3,23 @@ import { PersonalInformationPage } from '../src/page'
 
 describe('In the Tools QA webpage', () => {
   const webpage = 'http://toolsqa.com/automation-practice-form/';
+  const formInformation = {
+    firstName: 'Alejandro',
+    lastName: 'Perdomo',
+    sex: 'Male',
+    experience: 7,
+    profession: ['Automation Tester'],
+    tools: ['Selenium Webdriver'],
+    continent: 'South America',
+    file: './resources/image.jpg',
+    filename: 'image.jpg',
+    commands: [
+      'Browser Commands',
+      'Navigation Commands',
+      'Switch Commands',
+      'Wait Commands',
+      'WebElement Commands']
+  };
 
   beforeAll(async () => {
     await browser.get(webpage);
@@ -12,22 +29,7 @@ describe('In the Tools QA webpage', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
 
     beforeAll(async () => {
-      await personalInformationPage.fillForm({
-        firstName: 'Alejandro',
-        lastName: 'Perdomo',
-        sex: 'Male',
-        experience: 7,
-        profession: ['Automation Tester'],
-        tools: ['Selenium Webdriver'],
-        continent: 'South America',
-        file: './resources/image.jpg',
-        commands: [
-          'Browser Commands',
-          'Navigation Commands',
-          'Switch Commands',
-          'Wait Commands',
-          'WebElement Commands']
-      });
+      await personalInformationPage.fillForm(formInformation);
     });
 
     describe('and get the form title', () => {
@@ -36,9 +38,8 @@ describe('In the Tools QA webpage', () => {
       });
 
       describe('Then should upload an image', () => {
-        const expectedFilename: string = 'image.jpg'
         it('Should exist image.jpg in the webpage', async () => {
-          expect(await personalInformationPage.getUploadedImage()).toBe(expectedFilename);
+          expect(await personalInformationPage.getUploadedImage()).toBe(formInformation.filename);
         });
       });
     });

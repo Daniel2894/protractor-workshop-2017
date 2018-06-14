@@ -89,6 +89,6 @@ export class PersonalInformationPage {
 
   public async getUploadedImage(): Promise<string> {
     const uploadedRoute: string = await this.uploadButton.getAttribute('value');
-    return uploadedRoute.split(/(\\|\/)/g).pop();
+    return uploadedRoute.split('C:\\fakepath\\').pop();
   }
 }
