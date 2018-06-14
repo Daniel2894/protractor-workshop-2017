@@ -10,7 +10,7 @@ export class IFramePage {
     return element(by.id('IF1'));
   }
 
-  private get getMainTitle(): ElementFinder {
+  private get title(): ElementFinder {
     return element(by.css('#content h1'));
   }
 
@@ -19,15 +19,15 @@ export class IFramePage {
     return Number(height);
   }
 
-  public mainTitle(): promise.Promise<string> {
-    return this.getMainTitle.getText();
+  public getTitle(): promise.Promise<string> {
+    return this.title.getText();
   }
 
-  public switchFrame(): promise.Promise<void> {
+  public switchToFrame(): promise.Promise<void> {
     return browser.switchTo().frame(this.frameElement.getWebElement());
   }
 
-  public switchMainFrame(): promise.Promise<void> {
+  public switchToMainFrame(): promise.Promise<void> {
     return browser.switchTo().defaultContent();
   }
 }

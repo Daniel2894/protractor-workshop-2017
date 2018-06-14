@@ -25,26 +25,26 @@ describe('If i want to modify an IFrame', () => {
     });
 
     it('Should have "Sample IFrame page" for title', async () =>{
-      await expect(iFramePage.mainTitle())
+      await expect(iFramePage.getTitle())
         .toBe(expectedTitle);
     });
 
     describe('And should switch to Frame 1', () => {
       beforeAll(async () => {
-        await iFramePage.switchFrame();
+        await iFramePage.switchToFrame();
       });
 
       it('Should have the title "Practice Automation Form"', async () => {
-        await expect(iFramePage.mainTitle()).toBe(frameSwitchedTitle);
+        await expect(iFramePage.getTitle()).toBe(frameSwitchedTitle);
       });
 
       describe('And return to the main frame', () => {
         beforeAll(async () => {
-          await iFramePage.switchMainFrame();
+          await iFramePage.switchToMainFrame();
         });
 
         it('Should have the title of the main frame: "Sample Iframe page"', async () => {
-          await expect(iFramePage.mainTitle()).toBe(expectedTitle);
+          await expect(iFramePage.getTitle()).toBe(expectedTitle);
         });
       });
     });
