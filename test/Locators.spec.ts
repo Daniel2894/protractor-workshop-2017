@@ -36,8 +36,9 @@ describe('In the Tools QA webpage', () => {
       });
 
       describe('Then should upload an image', () => {
+        const expectedFilename: string = 'image.jpg'
         it('Should exist image.jpg in the webpage', async () => {
-          expect(await personalInformationPage.getUploadedImage()).toBe('image.jpg');
+          expect(await personalInformationPage.getUploadedImage()).toBe(expectedFilename);
         });
       });
     });
