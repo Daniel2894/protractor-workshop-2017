@@ -1,4 +1,5 @@
 import { element, by, ElementFinder } from 'protractor';
+import { resolve } from 'path';
 
 export class PersonalInformationPage {
 
@@ -42,6 +43,16 @@ export class PersonalInformationPage {
     return element(by.css('.wpb_wrapper h1'));
   }
 
+  private get uploadButton(): ElementFinder{
+    return element(by.id('photo'));
+  }  
+
+  public async uploadFile(relativeRoute: string): Promise<void> {
+    const absoluteRoute = resolve(process.cwd(), relativeRoute);
+
+    await this.uploadButton.sendKeys(absoluteRoute);
+  }
+
   public async fillForm(formInfo: any): Promise<void> {
     await this.firstNameField.sendKeys(formInfo.firstName);
     await this.lastNameField.sendKeys(formInfo.lastName);
@@ -62,10 +73,22 @@ export class PersonalInformationPage {
       await this.commandList(command).click();
     }
 
-    await this.submitButton.click();
+    if (formInfo.file) {
+      await this.uploadFile(formInfo.file);
+    }
   }
 
   public async formTitle(): Promise<string> {
     return this.titleText.getText();
+  }
+
+  public async submit(formInfo: any): Promise<void> {
+    await this.fillForm(formInfo);
+    await this.submitButton.click();
+  }
+
+  public async getUploadedImage(): Promise<string> {
+    const uploadedRoute: string = await this.uploadButton.getAttribute('value');
+    return uploadedRoute.split(/(\\|\/)/g).pop();
   }
 }
