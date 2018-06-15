@@ -52,12 +52,12 @@ export class PersonalInformationPage {
     return element(by.linkText('Test File to Download'));
   }
 
-  private async download(): Promise<void> {
+  private async download(downloadedFile: string): Promise<void> {
     const downloadLink = await this.getDownloadLink.getAttribute('href');
 
     const downloadService: DownloadService = new DownloadService();
     
-    await downloadService.downloadFile(downloadLink, 'file.xlsx');
+    await downloadService.downloadFile(downloadLink, downloadedFile);
   }
 
   public async uploadFile(relativeRoute: string): Promise<void> {
@@ -91,7 +91,7 @@ export class PersonalInformationPage {
     }
 
     if (formInfo.downloadFile) {
-      await this.download();
+      await this.download(formInfo.downloadedFile);
     }
   }
 

@@ -41,7 +41,7 @@ describe('In the Tools QA webpage', () => {
         expect(await personalInformationPage.formTitle()).toBe('Practice Automation Form');
       });
 
-      describe('Then should upload and donwload an image', () => {
+      describe('Then should upload and download an image', () => {
         it('Should exist image.jpg in the webpage', async () => {
           expect(await personalInformationPage.getUploadedImage()).toBe(formInformation.filename);
         });
