@@ -1,5 +1,6 @@
 import { element, by, ElementFinder } from 'protractor';
 import { resolve } from 'path';
+import { DownloadService } from '../service/Download.service'
 
 export class PersonalInformationPage {
 
@@ -45,7 +46,19 @@ export class PersonalInformationPage {
 
   private get uploadButton(): ElementFinder{
     return element(by.id('photo'));
-  }  
+  }
+
+  private get getDownloadLink(): ElementFinder{
+    return element(by.linkText('Test File to Download'));
+  }
+
+  private async download(): Promise<void> {
+    const downloadLink = await this.getDownloadLink.getAttribute('href');
+
+    const downloadService: DownloadService = new DownloadService();
+    
+    await downloadService.downloadFile(downloadLink, 'file.xlsx');
+  }
 
   public async uploadFile(relativeRoute: string): Promise<void> {
     const absoluteRoute = resolve(process.cwd(), relativeRoute);
@@ -75,6 +88,10 @@ export class PersonalInformationPage {
 
     if (formInfo.file) {
       await this.uploadFile(formInfo.file);
+    }
+
+    if (formInfo.downloadFile) {
+      await this.download();
     }
   }
 
